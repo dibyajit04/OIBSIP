@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List App</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #222;
+      color: #fff;
+    }
+    .container {
+      width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #333;
+    }
+    h1 {
+      text-align: center;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .task-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .task-item .delete {
+      background-color: #f44336;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .task-item .delete:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+    <div class="input-group">
+      <input type="text" id="task-title" placeholder="Title">
+      <textarea id="task-description" placeholder="Description"></textarea>
+      <button onclick="addTask()">Add Task</button>
+    </div>
+    <ul id="task-list">
+      </ul>
+  </div>
+
+  <script>
+    const taskList = document.getElementById("task-list");
+
+    function addTask() {
+      const title = document.getElementById("task-title").value;
+      const description = document.getElementById("task-description").value;
+
+      if (title === "" || description === "") {
+        alert("Please fill out both the title and description fields.");
+        return;
+      }
+
+      const taskItem = document.createElement("li");
+      taskItem.classList.add("task-item");
+      taskItem.innerHTML = `
+        <div>
+          <h3>${title}</h3>
+          <p>${description}</p>
+        </div>
+        <button class="delete" onclick="deleteTask(this)">Delete</button>
+      `;
+      taskList.appendChild(taskItem);
+
+      // Clear input fields
+      document.getElementById("task-title").value = "";
+      document.getElementById("task-description").value = "";
+    }
+
+    function deleteTask(button) {
+      const taskItem = button.parentElement;
+      taskList.removeChild(taskItem);
+    }
+  </script>
+</body>
+</html>

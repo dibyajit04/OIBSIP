@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .display {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: right;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+
+        button {
+            background-color: #eee;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        .operator {
+            background-color: #ffa500;
+        }
+
+        .equal {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="display" readonly>
+        </div>
+        <div class="buttons">
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button onclick="appendOperator('%')" class="operator">%</button>
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button onclick="appendOperator('*')" class="operator">*</button>
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button onclick="appendOperator('+')" class="operator">+</button>
+            <button onclick="appendNumber('.')">.</button>
+            <button onclick="appendNumber('0')">0</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendOperator('-')" class="operator">-</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendOperator('/')" class="operator">/</button>
+            <button onclick="appendOperator('^')" class="operator">^</button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let operator = null;
+        let firstOperand = null;
+
+        function appendNumber(number) {
+            display.value += number;
+        }
+
+        function appendOperator(op) {
+            if (operator !== null) {
+                calculate();
+            }
+            operator = op;
+            firstOperand = parseFloat(display.value);
+            display.value += op;
+        }
+
+        function calculate() {
+            let secondOperand = parseFloat(display.value.substring(display.value.lastIndexOf(operator) + 1));
+
+            switch (operator) {
+                case '+':
+                    display.value = firstOperand + secondOperand;
+                    break;
+                case '-':
+                    display.value = firstOperand - secondOperand;
+                    break;
+                case '*':
+                    display.value = firstOperand * secondOperand;
+                    break;
+                case '/':
+                    display.value = firstOperand / secondOperand;
+                    break;
+                case '%':
+                    display.value = (firstOperand * secondOperand) / 100;
+                    break;
+                case '^':
+                    display.value = Math.pow(firstOperand, secondOperand);
+                    break;
+            }
+
+            operator = null;
+            firstOperand = null;
+        }
+
+        function clearDisplay() {
+            display.value = '';
+            operator = null;
+            firstOperand = null;
+        }
+    </script>
+</body>
+</html>

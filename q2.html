@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: rgba(240, 229, 229, 0.728);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid white;
+    }
+
+    th {
+      background-color: #55a1bd;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: white;
+    }
+
+    tr:hover {
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Student Information</h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Roll No.</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody id="studentTable"></tbody>
+  </table>
+
+  <script>
+    const students = [
+      { roll: 1, name: "johny bairstrow", mobile: "1234567890", email: "john@gmail.com" },
+      { roll: 2, name: "stive Smith", mobile: "2345678901", email: "stive@gmail.com" },
+      { roll: 3, name: "Sam curran", mobile: "3456789012", email: "sam@gmail.com" },
+      { roll: 4, name: "faf duplesis", mobile: "4567890123", email: "faf@gmail.com" },
+      { roll: 5, name: "jimmy overtton", mobile: "5678901234", email: "jimmy@gmail.com" },
+      { roll: 6, name: "Will jacks", mobile: "6789012345", email: "jacks@gmail.com" },
+      { roll: 7, name: "David miller", mobile: "7890123456", email: "miller@gmail.com" },
+      { roll: 8, name: "Liam Livingstone", mobile: "8901234567", email: "liam@gmail.com" },
+      { roll: 9, name: "Devon Conway", mobile: "9012345678", email: "devon@gmail.com" },
+      { roll: 10, name: "Ruturaj Gaikwad", mobile: "0123456789", email: "rutu@gmail.com" }
+    ];
+
+    function displayStudentData() {
+      const tableBody = document.getElementById('studentTable');
+      students.forEach(student => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${student.roll}</td>
+          <td>${student.name}</td>
+          <td>${student.mobile}</td>
+          <td>${student.email}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    displayStudentData();
+  </script>
+
+</body>
+</html>

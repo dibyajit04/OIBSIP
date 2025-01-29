@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Changer</title>
+  <style>
+    #colorDiv {
+      height: 200px;
+      width: 200px;
+      border: 1px solid black;
+      margin-top: 20px;
+    }
+    .color-button {
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="colorDiv"></div>
+  <div id="buttons-container"></div>
+  <script>
+    const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+    function createButtons() {
+      const container = document.getElementById('buttons-container');
+      colors.forEach(color => {
+        const button = document.createElement('button');
+        button.textContent = color;
+        button.classList.add('color-button');
+        button.style.backgroundColor = color;
+        button.addEventListener('click', () => changeColor(color));
+        container.appendChild(button);
+      });
+    }
+    function changeColor(color) {
+      document.getElementById('colorDiv').style.backgroundColor = color;
+    }
+    createButtons();
+  </script>
+</body>
+</html>

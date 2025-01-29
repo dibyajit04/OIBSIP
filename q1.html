@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asst-2#Question-1</title>
+    <style>
+        #html {
+            color:rgb(22, 24, 24);
+            text-align: center;
+            text-decoration: dotted;
+            background-color: rgb(95, 244, 197);
+            font-family: 'Times New Roman', Times, serif;
+        }
+        button{
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px ;
+            background-color: rgb(13, 212, 196);
+            
+        }
+    </style>
+</head>
+<body>
+    <h1 id="html">Number of times button clicked:  0 Times</h1>
+    <button onclick="Click()">Click</button>
+    <script>
+        let i=0
+        function Click(){
+            i++
+            document.getElementById("html").innerHTML="Number of times button clicked: "+i+" Times"
+        }
+        </script>
+</body>
+</html>

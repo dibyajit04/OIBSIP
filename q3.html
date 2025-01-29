@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asst-2#Question-3</title>
+    <style>
+        .task{
+            border: 1px solid black;
+            width: 200px;
+        }
+        .todo{
+            text-align: center;
+            font-family: sans-serif;
+            color: rgb(70, 205, 58);
+        }
+        .container{
+            text-align: center;
+            border-radius:20px;
+            margin:auto;
+            padding: auto;
+
+        }
+        button{
+            margin: 10px;
+            color:mediumvioletred;
+            padding: 8px;
+        }
+        .task{
+            margin: 2px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="todo">TODO TASK</h1>
+    <div id="inputs">
+        <input type="text" name="task" placeholder="Enter TASK">
+        <input type="date" name="task">
+        <input type="time" name="task">
+        <button onclick="ADD()">ADD</button>
+    </div>
+    <div id="ts" class="container"></div>
+    </div>
+    <script>
+        function ADD()
+        {
+            let inputs = document.getElementsByName("task")
+            console.log(inputs)
+            let task = inputs[0].value
+            let date = inputs[1].value
+            let time = inputs[2]. value
+
+            let newTask = document.createElement("div")
+            let newP = document.createElement("p")
+            let newLabel1 = document.createElement("label")
+            let newLabel2 = document.createElement("label")
+
+            newTask.className ="task"
+
+            newP.innerHTML = "<h5>Task name:</h5>"+task
+            newLabel1.innerHTML = "<h5>Date:</h5>"+date
+            newLabel2.innerHTML = "<h5>Time:</h5>"+time
+
+            
+            newTask.appendChild(newP)
+            newTask.appendChild(newLabel1)
+            newTask.appendChild(newLabel2)
+            console.log(newTask);
+            
+
+            document.getElementById("ts").appendChild(newTask)
+        }
+    </script>
+</body>
+</html>
